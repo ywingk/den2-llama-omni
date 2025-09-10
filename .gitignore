@@ -3,6 +3,8 @@ llama_omni.egg-info/
 models/
 vocoder/
 # -- work dirs --
+_trash/
 .done
 kaldi/
 questions/
+expr/
