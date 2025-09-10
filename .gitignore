@@ -3,6 +3,7 @@ llama_omni.egg-info/
 models/
 vocoder/
 # -- work dirs --
+.done
 expr/
 train/
 test/
