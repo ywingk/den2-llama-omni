@@ -1,0 +1,10 @@
+*.pyc
+llama_omni.egg-info/
+models/
+vocoder/
+# -- work dirs --
+expr/
+train/
+test/
+dev/
+questions/
