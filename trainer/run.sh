@@ -26,7 +26,8 @@ cd ${run_path}
 
 if [ $task == "train" ]; then
   
-  export CUDA_VISIBLE_DEVICES="1,2"
+  #export CUDA_VISIBLE_DEVICES="1,2"
+  export CUDA_VISIBLE_DEVICES="2"
 
   question_file="questions/${runTitle}_train.json"
   answer_file="${output_dir}/answer_train.json"
