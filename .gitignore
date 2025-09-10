@@ -4,8 +4,5 @@ models/
 vocoder/
 # -- work dirs --
 .done
-expr/
-train/
-test/
-dev/
+kaldi/
 questions/
