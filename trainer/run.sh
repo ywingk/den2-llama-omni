@@ -16,10 +16,13 @@ fi
 
 # ------------------------------------------------
 runTitle="${dataset/\//_}"
+questions_dir="${base_dir}/questions"
 output_dir="${base_dir}/expr/${runTitle}"
+
 if [ ! -d "$output_dir" ]; then
   mkdir -p $output_dir
 fi
+
 # ------------------------------------------------
 
 cd ${base_dir}
@@ -29,7 +32,7 @@ if [ $task == "train" ]; then
   #export CUDA_VISIBLE_DEVICES="1,2"
   export CUDA_VISIBLE_DEVICES="2"
 
-  question_file="questions/${runTitle}_train.json"
+  question_file="${questions_dir}/${runTitle}_train.json"
   answer_file="${output_dir}/answer_train.json"
 
   python omni_speech/train/stage1.py \
@@ -52,7 +55,7 @@ elif [ $task == "test" ]; then
   export CUDA_VISIBLE_DEVICES="0"
 
   checkpoint="${expr_dir}/checkpoint-199000"
-  question_file="questions/${runTitle}_test.json"
+  question_file="${questions_dir}/${runTitle}_test.json"
   answer_file="${output_dir}/answer_test.json"
   
   python omni_speech/infer/infer.py \
