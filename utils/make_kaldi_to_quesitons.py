@@ -2,7 +2,7 @@
 import os, sys
 import json
 
-proj_path = "/home/kyi/den2-llama-omni"
+base_dir = "/home/kyi/den2-llama-omni"
 
 # -----------------------------------------------------------------
 if len(sys.argv) == 3:
@@ -16,9 +16,9 @@ else:
 assert task in ["train", "test"], f"ERROR - check task {task}"
 # -----------------------------------------------------------------
 
-kaldi_path= os.path.join(proj_path, "dataset", dataset_id, task)
+kaldi_path= os.path.join(base_dir, "corpus", dataset_id, "kaldi", task)
 dataset_name = dataset_id.replace('/', '_')
-output_dir = os.path.join(proj_path, "questions")
+output_dir = os.path.join(base_dir, "questions")
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 questions_fn = os.path.join(output_dir, dataset_name+"_"+task+".json")

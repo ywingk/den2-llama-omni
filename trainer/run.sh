@@ -2,22 +2,24 @@
 
 base_dir="/home/kyi/den2-llama-omni"
 
-## =======================
-if [ $# -eq 2 ]; then 
+# ------------------------------------------------
+if [ $# -eq 3 ]; then 
   dataset=$1
   task=$2
+  gpus=$3
 else
   echo; 
-  echo " * Usage: bash $0 <dataset> <task> "
-  echo " * <dataset>: kor/KsponSpeech, eng/LibriSpeech, ..."
+  echo " * Usage: bash $0 <dataset> <task> <gpus>"
+  echo " * <dataset>: kor/AIHUB_123, eng/LibriSpeech, ..."
   echo " * <task>: train, test "
+  echo " * <gpus>: 0,1,2,3 or 2,3 or 3 etc... "
   exit;
 fi
 
 # ------------------------------------------------
 runTitle="${dataset/\//_}"
 questions_dir="${base_dir}/questions"
-output_dir="${base_dir}/expr/${runTitle}"
+output_dir="${base_dir}/trainer/${runTitle}"
 
 if [ ! -d "$output_dir" ]; then
   mkdir -p $output_dir
@@ -30,7 +32,7 @@ cd ${base_dir}
 if [ $task == "train" ]; then
   
   #export CUDA_VISIBLE_DEVICES="1,2"
-  export CUDA_VISIBLE_DEVICES="2"
+  export CUDA_VISIBLE_DEVICES="${gpus}"
 
   question_file="${questions_dir}/${runTitle}_train.json"
   answer_file="${output_dir}/answer_train.json"
@@ -52,7 +54,7 @@ if [ $task == "train" ]; then
 
 elif [ $task == "test" ]; then
 
-  export CUDA_VISIBLE_DEVICES="0"
+  export CUDA_VISIBLE_DEVICES="${gpus}"
 
   checkpoint="${expr_dir}/checkpoint-199000"
   question_file="${questions_dir}/${runTitle}_test.json"
