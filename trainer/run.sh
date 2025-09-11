@@ -1,6 +1,6 @@
 #!/bin/bash
 
-run_path="/home/kyi/den2-llama-omni"
+base_dir="/home/kyi/den2-llama-omni"
 
 ## =======================
 if [ $# -eq 2 ]; then 
@@ -16,13 +16,13 @@ fi
 
 # ------------------------------------------------
 runTitle="${dataset/\//_}"
-output_dir="${run_path}/expr/${runTitle}"
+output_dir="${base_dir}/expr/${runTitle}"
 if [ ! -d "$output_dir" ]; then
   mkdir -p $output_dir
 fi
 # ------------------------------------------------
 
-cd ${run_path}
+cd ${base_dir}
 
 if [ $task == "train" ]; then
   
