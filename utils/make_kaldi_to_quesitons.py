@@ -3,6 +3,7 @@ import os, sys
 import json
 
 base_dir = "/home/kyi/den2-llama-omni"
+TESTSET_MAX_CNT=1000
 
 # -----------------------------------------------------------------
 if len(sys.argv) == 3:
@@ -35,6 +36,7 @@ assert len(txt_lines) == len(scp_lines), "check kaldi files"
 with open(questions_fn, "w") as ofp:
     saved_array = []
     for idx, tline in enumerate(txt_lines):
+        if task == "test" and idx > TESTSET_MAX_CNT: break            
         parts = tline.strip().split()
         key = parts[0]
         text = ' '.join(parts[1:])
