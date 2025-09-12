@@ -8,3 +8,5 @@ _trash/
 kaldi/
 questions/
 expr/
+checkpoint-*
+runs/

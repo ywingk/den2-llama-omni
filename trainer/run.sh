@@ -54,6 +54,9 @@ if [ $task == "train" ]; then
 
 elif [ $task == "test" ]; then
 
+  echo " -- use den2-tester scripts "
+  exit;
+
   export CUDA_VISIBLE_DEVICES="${gpus}"
 
   checkpoint="${expr_dir}/checkpoint-199000"
